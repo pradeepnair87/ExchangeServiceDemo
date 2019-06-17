@@ -1,0 +1,13 @@
+{
+  "bpi": {
+    "2019-06-01": 8553.1267,
+    "2019-06-02": 8737.3617,
+    "2019-06-03": 8105.13,
+    "2019-06-04": 7677.3983
+  },
+  "disclaimer": "This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD.",
+  "time": {
+    "updated": "Jun 15, 2019 00:03:00 UTC",
+    "updatedISO": "2019-06-15T00:03:00+00:00"
+  }
+}
