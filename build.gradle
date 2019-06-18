@@ -1,43 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.3.RELEASE'
+}
+
 group 'com.searchmetrics'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8
 
-ext {
-    springBootVersion = '2.0.3.RELEASE'
-}
 
 repositories {
     mavenCentral()
 }
 
 configurations {
-    all*.exclude group: "org.slf4j", module: "slf4j-log4j12"
+
     all*.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
     all*.exclude group: "ch.qos.logback"
     all*.exclude module: 'logback-access-spring-boot-starter'
 
 }
+
 dependencies {
 
-    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-            {
-                exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-            }
-    compile ("org.springframework.boot:spring-boot-starter-log4j2:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile ("org.springframework.boot:spring-boot-starter-log4j2")
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.projectlombok:lombok:1.16.14")
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.4'
-    compile ("com.fasterxml.jackson.core:jackson-core:2.8.8")
-    compile ("com.fasterxml.jackson.core:jackson-databind:2.8.8")
-    testCompile 'org.mockito:mockito-core:1.9.5'
-    testCompile "org.mock-server:mockserver-netty:3.9.1"
-
-    testCompile (group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.0.3.RELEASE')
+    compile ("com.fasterxml.jackson.core:jackson-core:2.9.6")
+    compile ("com.fasterxml.jackson.core:jackson-databind:2.9.6")
+    testCompile 'org.mockito:mockito-core:2.6.2'
+    testCompile 'org.mock-server:mockserver-netty:3.9.1'
+    testCompile (group: 'org.springframework.boot', name: 'spring-boot-starter-test')
             {
-                exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+                exclude group: 'org.mockito', module: 'mockito-core'
             }
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
